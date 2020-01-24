@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
 import { DATA } from '../data';
@@ -23,7 +22,7 @@ MainScreen.navigationOptions = ({navigation}) => ({
   headerTitle: "Мой блог",
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-      <Item title="Take photo" iconName="ios-camera" onPress={() => console.log('press photo')}/>
+      <Item title="Take photo" iconName="ios-camera" onPress={() => navigation.push('Create')}/>
     </HeaderButtons>
   ),
   headerLeft: () => (
@@ -31,15 +30,4 @@ MainScreen.navigationOptions = ({navigation}) => ({
       <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => navigation.toggleDrawer()}/>
     </HeaderButtons>
   )
-});
-
-const styles = StyleSheet.create({
-  wrapper: {
-    padding: 10
-  },
-  center: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
 });

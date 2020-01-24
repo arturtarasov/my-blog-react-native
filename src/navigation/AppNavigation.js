@@ -74,15 +74,43 @@ const BottomNavigator =
       }
     )
 
+const AboutNavigator = createStackNavigator({
+    About: AboutScreen,
+  },
+  navigatorOptions
+);
+
+const CreateNavigator = createStackNavigator({
+    Create: CreateScreen,
+  },
+  navigatorOptions
+);
+
 const MainNavigator = createDrawerNavigator({
   PostTabs: {
-    screen: BottomNavigator
+    screen: BottomNavigator,
+    navigationOptions: {
+      drawerLabel: 'Главная'
+    }
   },
   About: {
-    screen: AboutScreen
+    screen: AboutNavigator,
+    navigationOptions: {
+      drawerLabel: 'О приложении'
+    }
   },
   Create: {
-    screen: CreateScreen
+    screen: CreateNavigator,
+    navigationOptions: {
+      drawerLabel: 'Новый пост'
+    }
+  }
+}, {
+  contentOptions: {
+    activeTintColor: THEME.MAIN_COLOR,
+    labelStyle: {
+      fontFamily: 'open-bold',
+    }
   }
 })
 
