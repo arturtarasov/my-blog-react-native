@@ -1,14 +1,17 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
 import { Post } from '../components/Post';
 import { DATA } from '../data';
+import { AppHeaderIcon } from '../components/AppHeaderIcon'
 
 export const MainScreen = ({ navigation }) => {
   const openPostHandler = post => {
     navigation.navigate("Post", {
       postId: post.id,
-      date: post.date
+      date: post.date,
+      booked: post.booked
     });
   };
   return (
@@ -23,7 +26,17 @@ export const MainScreen = ({ navigation }) => {
 };
 
 MainScreen.navigationOptions = {
-  headerTitle: "Мой блог"
+  headerTitle: "Мой блог",
+  headerRight: () => (
+    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+      <Item title="Take photo" iconName="ios-camera" onPress={() => console.log('press photo')}/>
+    </HeaderButtons>
+  ),
+  headerLeft: () => (
+    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+      <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => console.log('press menu')}/>
+    </HeaderButtons>
+  )
 };
 
 const styles = StyleSheet.create({
