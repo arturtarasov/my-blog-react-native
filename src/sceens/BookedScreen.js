@@ -20,14 +20,14 @@ export const BookedScreen = ({ navigation }) => {
   );
 };
 
-BookedScreen.navigationOptions = {
+BookedScreen.navigationOptions = ({navigation}) => ({
   headerTitle: "Избранное",
   headerLeft: () => (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-      <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => console.log('press menu')}/>
+      <Item title="Toggle Drawer" iconName="ios-menu" onPress={() => navigation.toggleDrawer()}/>
     </HeaderButtons>
   )
-};
+});
 
 const styles = StyleSheet.create({
   wrapper: {
