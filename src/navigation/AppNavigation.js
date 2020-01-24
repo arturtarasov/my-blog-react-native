@@ -3,13 +3,16 @@ import { Platform } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Ionicons } from '@expo/vector-icons'
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { Ionicons } from '@expo/vector-icons';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import { MainScreen } from '../sceens/MainScreen';
 import { PostScreen } from '../sceens/PostScreen';
+import { AboutScreen } from '../sceens/AboutScreen';
+import { CreateScreen } from '../sceens/CreateScreen';
 import { THEME } from '../theme';
-import { BookedScreen } from '../sceens/BookedScreen'
+import { BookedScreen } from '../sceens/BookedScreen';
 
 const navigatorOptions = {
   defaultNavigationOptions: {
@@ -71,4 +74,16 @@ const BottomNavigator =
       }
     )
 
-export const AppNavigation = createAppContainer(BottomNavigator);
+const MainNavigator = createDrawerNavigator({
+  PostTabs: {
+    screen: BottomNavigator
+  },
+  About: {
+    screen: AboutScreen
+  },
+  Create: {
+    screen: CreateScreen
+  }
+})
+
+export const AppNavigation = createAppContainer(MainNavigator);
