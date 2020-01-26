@@ -6,7 +6,7 @@ import { View, StyleSheet, Image, Button, Alert } from 'react-native';
 
 async function askForPermissions() {
     const { status } = await Permissions.askAsync(
-        Permissions.CALENDAR,
+        Permissions.CAMERA,
         Permissions.CAMERA_ROLL
     )
     if (status !== 'granted') {
